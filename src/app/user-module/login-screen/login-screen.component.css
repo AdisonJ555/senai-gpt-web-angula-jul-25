@@ -1,13 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
 
-*{                /*todos os elementos*/
 
-      padding:  0px; /*margen interna*/
-      margin: 0px; /*margen externa*/
-      box-sizing: border-box; /*muda a estrutura de espaçamento*/ 
-      font-family: "inter"; /*FONTE*/
-
-}
 
 .titulo {
 

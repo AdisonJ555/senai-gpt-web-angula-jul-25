@@ -5,5 +5,10 @@ export const routes: Routes = [
     {
         path: "login",
         loadComponent: () => LoginScreenComponent
+    },
+    {
+        path:"",
+        loadComponent: () => LoginScreenComponent
+             
     }
 ];
