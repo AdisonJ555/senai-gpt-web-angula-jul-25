@@ -48,12 +48,12 @@ export class LoginScreenComponent {
 
     if (this.loginForm.value.email == "") {
 
-      this.loginForm.value.email = "Preecha o email.";
+      this.emailErrorMessage = "Preecha o email.";
       return;
     }
     if (this.loginForm.value.password == "") {
 
-      this.loginForm.value.password = "Preencha a senha.";
+      this.passwordErrorMessage = "Preencha a senha.";
       return;
     }
 
@@ -80,6 +80,8 @@ export class LoginScreenComponent {
       localStorage.setItem("meuToken", meuToken)
 
       localStorage.setItem("meuId", userId)
+
+      this.loginForm.value.email = "";
 
       window.location.href = "chat";
 

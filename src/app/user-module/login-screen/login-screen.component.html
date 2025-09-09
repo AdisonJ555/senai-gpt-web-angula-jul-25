@@ -16,11 +16,13 @@
 
             <input class="inpt" type="email" placeholder="Insira o e-mail" formControlName="email">
             <span class="errorMessage">{{emailErrorMessage}} </span>
+
             <input class="inpt" type="password" placeholder="Insira a senha" formControlName="password">
             <span class="errorMessage"> {{passwordErrorMessage}}</span>
 
-            <button class="button" (click)="onLoginClick()">Entrar</button>
-
+            <button class="button " (click)="onLoginClick() ">Entrar</button>
+            <span class="sussccessLogin " style="color: green; ">{{successStatusMessage}}</span>
+            <span class="errorLogin" style="color: red;"> {{errorStatusMessage}}</span>
         </div>
 
 
