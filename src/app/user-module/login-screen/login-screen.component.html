@@ -1,30 +1,33 @@
-  <header></header> <!--criar cabecario!-->
+<header></header>
+<!--criar cabecario!-->
 
 <body>
-        <main class="page-conteiner"> <!-- caixa maior -->
+    <main class="page-conteiner">
+        <!-- caixa maior -->
 
-              <div 
-              
-              class="robo-image" >
-            
-              </div>            
-   
-              <div class="login-container" [formGroup]="loginForm">
-                     <img class="logo" src="imgs/logo.png" alt="Logo do SenaiGPT">
+        <div class="robo-image">
 
-                 <h1 class="titulo" >Login</h1>                      
+        </div>
 
-                 <input class="inpt" type="email" placeholder="Insira o e-mail" formControlName="email">
-                 <input class="inpt" type="password" placeholder="Insira a senha" formControlName="password">
+        <div class="login-container" [formGroup]="loginForm">
+            <img class="logo" src="imgs/logo.png" alt="Logo do SenaiGPT">
 
-                 <button class="button" (click)="onLoginClick()">Entrar</button>
+            <h1 class="titulo">Login</h1>
 
-             </div>
+            <input class="inpt" type="email" placeholder="Insira o e-mail" formControlName="email">
+            <span class="errorMessage">{{emailErrorMessage}} </span>
+            <input class="inpt" type="password" placeholder="Insira a senha" formControlName="password">
+            <span class="errorMessage"> {{passwordErrorMessage}}</span>
 
-    
-        </main>
+            <button class="button" (click)="onLoginClick()">Entrar</button>
 
-        <footer></footer>     <!-- criar fundo -->
+        </div>
+
+
+    </main>
+
+    <footer></footer>
+    <!-- criar fundo -->
 
 
 </body>

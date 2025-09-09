@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { ChangeDetectorRef, Component } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 
 @Component({
@@ -11,7 +11,14 @@ export class LoginScreenComponent {
 
   loginForm: FormGroup;
 
-  constructor(private fb: FormBuilder) {
+  emailErrorMessage: string;
+  passwordErrorMessage: string;
+  successStatusMessage: string;
+  errorStatusMessage: string;
+
+
+
+  constructor(private fb: FormBuilder, private cd: ChangeDetectorRef) {
     //quando a tela iniciar.
 
     //inicia o formulario.
@@ -20,22 +27,34 @@ export class LoginScreenComponent {
       password: ["", [Validators.required]]//campo obrigatorio de senha.
     });
 
+    this.emailErrorMessage = "";
+    this.passwordErrorMessage = "";
+    this.successStatusMessage = "";
+    this.errorStatusMessage = "";
+
+
   }
 
   async onLoginClick() {
+
+    this.emailErrorMessage = "";
+    this.passwordErrorMessage = "";
+    this.successStatusMessage = "";
+    this.errorStatusMessage = "";
 
 
     console.log("Email", this.loginForm.value.email);
     console.log("Password", this.loginForm.value.password);
 
-    if(this.loginForm.value.email == ""){
-      alert("Preecha o email.");
-    return;
-    }
-    if(this.loginForm.value.password == ""){
+    if (this.loginForm.value.email == "") {
 
-      alert("Preencha a senha.");
-    return;
+      this.loginForm.value.email = "Preecha o email.";
+      return;
+    }
+    if (this.loginForm.value.password == "") {
+
+      this.loginForm.value.password = "Preencha a senha.";
+      return;
     }
 
     let response = await fetch("https://senai-gpt-api.azurewebsites.net/login", {
@@ -44,22 +63,37 @@ export class LoginScreenComponent {
         "Content-Type": "application/json"
       },
       body: JSON.stringify({
-      email: this.loginForm.value.email,
-      password: this.loginForm.value.password
-    })
+        email: this.loginForm.value.email,
+        password: this.loginForm.value.password
+      })
     });
 
     if (response.status >= 200 && response.status <= 299) {
 
-      alert("login ok");
-      
+      this.successStatusMessage = "login realizado com sucesso.";
+      let json = await response.json();
+      console.log("JSON", json);
+
+      let meuToken = json.accessToken;
+      let userId =json.user.id;
+
+      localStorage.setItem("meuToken", meuToken)
+
+      localStorage.setItem("meuId", userId)
+
+      window.location.href = "chat";
+
     } else {
 
-        alert("Senha ou Email incorreta"); }
- 
-    
-      
+     this.errorStatusMessage = "Senha ou Email incorreta";
     }
+
+     this.cd.detectChanges();
+
+
+  }
+
+    
 
 }
 
