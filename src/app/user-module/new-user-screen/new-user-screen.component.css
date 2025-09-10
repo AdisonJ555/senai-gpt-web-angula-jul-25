@@ -1,0 +1,92 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+.titulo {
+    font-size: 76px;
+    font-family: 'inter';
+    font-weight: 400;
+    /*tamanho do negrito*/
+    margin-bottom: 16px;
+}
+
+.robo-image {
+    background-image: url(/imgs/Rectangle\ 1.png);
+    background-size: cover;
+    /*para ajustar a img automatico*/
+    background-position: 0px -90px;
+    /*definir posição*/
+    /* background-color:;*/
+    width: 50vw;
+    /* largura da pagina */
+    height: 100vh;
+    /* autura da pagina */
+}
+
+.page-conteiner {
+    display: flex;
+    /* um ao lado do outro */
+}
+
+.login-container {
+    /*background-color:;*/
+    width: 50vw;
+    /* largura da pagina */
+    height: 100vh;
+    /* autura da pagina */
+    /* kit sobrevivncia da centralizaçao */
+    display: flex;
+    /* ativar ao flex */
+    flex-direction: column;
+    /* mudar flex para colunas */
+    align-items: center;
+    justify-content: center;
+}
+
+.logo {}
+
+.classe {
+    /*com ponto antes*/
+}
+
+#id {
+    /* com # antes*/
+}
+
+img {
+    /*sem nenhum prefixo*/
+}
+
+.login-container img {
+    height: 60px;
+}
+
+.inpt {
+    padding: 18px/*margen interna*/
+    ;
+    background-color: #F7F9FB;
+    width: 377px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    margin-bottom: 16px;
+}
+
+.button {
+    /*height:; autura*/
+    width: 377px;
+    /*largura*/
+    background-color: #1C1C1C;
+    padding: 18px;
+    border-radius: 10px;
+    /*curva do botão*/
+    /* margin-bottom: - margen do botão*/
+    color: white;
+    /*cor da fonte*/
+    border: none;
+    cursor: pointer;
+    /*identificar botão*/
+}
+
+
+/* .errorMenssage {
+    color: red;
+    font-size: 15px;
+    transform: translateY(-10px);
+} */
