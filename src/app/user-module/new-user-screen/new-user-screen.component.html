@@ -5,21 +5,26 @@
 
     </div>
 
-    <div class="login-container" [formGroup]="chatForm">
+    <div class="login-container" [formGroup]="newUserForm">
         <img class="logo" src="imgs/logo.png" alt="Logo do SenaiGPT">
 
         <h1 class="titulo">Novo Usuario</h1>
 
-        <input class="inpt" type="Usuario" placeholder="Insira o usuario" formControlName="newUser">
-        <input class="inpt" type="email" placeholder="Insira o e-mail" formControlName="newEmail">
-        <!-- <span class="errorMessage">{{emailErrorMessage}} </span> -->
+        <input class="inpt" type="Name" placeholder="Insira seu nome." formControlName="Name">
+        <span class="errorMessage">{{errorName}} </span>
 
-        <input class="inpt" type="password" placeholder="Insira a senha" formControlName="newPassword">
-        <input class="inpt" type="password" placeholder="Insira a senha" formControlName="newPassword">
-        <!-- <span class="errorMessage"> {{}}</span> -->
+        <input class="inpt" type="email" placeholder="Insira o e-mail." formControlName="Email">
+        <span class="errorMessage">{{emailErrorMessage}} </span>
 
-        <button class="button ">Entrar</button>
-        <a href="Voltar a tela de Login">http://localhost:59997/</a>
+        <input class="inpt" type="password" placeholder="Insira a senha." formControlName="Password">
+        <!-- <span class="errorMessage">{{}} </span> -->
+
+        <input class="inpt" type="password" placeholder="Repita a senha." formControlName="Password">
+        <!-- <span class="errorMessage">{{}} </span> -->
+        
+
+           <button class="button " (click)="enter() ">Entrar</button>
+        <!-- <a href="Voltar a tela de Login">http://localhost:59997/</a> -->
         <!-- <span class=" sussccessLogin " style="color: green; ">{{}}</span> -->
         <!-- <span class="errorLogin " style="color: red; "> {{}}</span> -->
     </div>
