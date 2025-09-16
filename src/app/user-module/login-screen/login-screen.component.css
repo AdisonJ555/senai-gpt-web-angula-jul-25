@@ -89,3 +89,7 @@ img {
     font-size: 15px;
     transform: translateY(-10px);
 }
+
+a {
+    font-weight:bold;
+}

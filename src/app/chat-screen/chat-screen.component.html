@@ -7,17 +7,14 @@
 
             <button class="btn-chat"> <i class="fa-regular fa-message"> </i> New chat</button>
 
-            <button class="bt1"> <i class="fa-regular fa-message">
-            </i> All Chat toll Ethics
+            <button *ngFor="let chat of chats" class="bt1">
+                 <i class="fa-regular fa-message">     
+                 </i>
+                 {{chat.chatTitle}}   
+            
             </button>
 
-            <button class="bt1"> <i class="fa-regular fa-message">
-            </i> All Chat Tool Imapact Wiriting
-            </button>
-
-            <button class="bt1"> <i class="fa-regular fa-message">
-            </i> New Chat
-            </button>
+            
 
         </div>
 

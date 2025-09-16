@@ -68,9 +68,9 @@ export class NewUserScreenComponent {
       this.emailErrorMessage = "Preecha o email.";
       return;
     }
-    if (this.newUserForm.value.Password == "") {
+    if (this.newUserForm.value.Password !== this.newUserForm.value.confirmPassword) {
 
-      this.passwordErrorMessage = "Preencha a senha.";
+      this.passwordErrorMessage = "Senhas não corresponden.";
       return;
 
     }
