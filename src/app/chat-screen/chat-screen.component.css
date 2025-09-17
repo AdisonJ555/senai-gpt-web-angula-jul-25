@@ -42,7 +42,7 @@
     height: auto;
 }
 
-.bt1 {
+.btn-chat {
     width: 100%;
     height: 48px;
     margin-bottom: 4;
@@ -52,12 +52,13 @@
     padding: 12;
     text-align: left;
     padding-left: 10px;
+    cursor: pointer;
 }
 
 
 /*espaço i e para edita o icone*/
 
-.btn-chat {
+.btn-Nchat {
     width: 100%;
     height: 40px;
     margin-bottom: 4;
@@ -92,6 +93,7 @@
     height: 272px;
     max-width: 75%;
     display: flex;
+    gap: 5px;
 }
 
 .exa {
@@ -116,7 +118,8 @@ p {
     display: flex;
     margin-bottom: 16px;
     padding: 6px;
-    ;
+    background-color:#e6e6e6;
+    border-radius: 10px;
 }
 
 .input-container {
