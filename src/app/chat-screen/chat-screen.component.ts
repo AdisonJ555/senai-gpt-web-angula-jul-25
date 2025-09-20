@@ -52,12 +52,18 @@ export class ChatScreenComponent {
       headers: {
         "Authorization": "Bearer " + localStorage.getItem("meuToken")
       }
-    }));
+    })) as IChat[];
 
-    console.log("chat", response)
+    
 
     if (response) {
+      console.log("chat", response);
 
+      let userId = localStorage.getItem("meuId");
+
+      response=response.filter(chat => chat.userId == userId);
+
+      //mostra chats na tela.
       this.chats = response as [];
 
     } else {
@@ -76,10 +82,7 @@ export class ChatScreenComponent {
 
     this.chatSelecionado = chatClicado;
 
-    //logica para buscar as mensagens
-
-
-
+    //logica para buscar as mensagens do chat clicado
     let response = await firstValueFrom(this.http.get("https://senai-gpt-api.azurewebsites.net/messages?chatId=" + chatClicado.id, {
       headers: {
         "Authorization": "Bearer " + localStorage.getItem("meuToken")
@@ -94,16 +97,20 @@ export class ChatScreenComponent {
 
   async enviarMenssagen() {
 
+    // debugger;
+
     let novaMenssagenUsuario = {
+
       chatId: this.chatSelecionado.id,
       userID: localStorage.getItem("meuId"),
       text: this.menssagemUsuario.value
     };
-
+    //salva a menssagen do usuario no banco de dados
+  
     let novaMenssagenUsuarioResponde = await firstValueFrom(this.http.post("https://senai-gpt-api.azurewebsites.net/messages",
       novaMenssagenUsuario, {
       headers: {
-        "Content-Type": "Aplication/json",
+        "Content-Type": "application/json",
         "Authorization": "Bearer " + localStorage.getItem("meuToken")
       }
     }));
@@ -122,7 +129,7 @@ export class ChatScreenComponent {
       }
     }, {
       headers: {
-        "Content-Type": "aplication/json",
+        "Content-Type": "application/json",
         "x-goog-api-key": "AIzaSyDV2HECQZLpWJrqCKEbuq7TT5QPKKdLOdo"
       }
     })) as any;
@@ -137,7 +144,7 @@ export class ChatScreenComponent {
     let novaRespostaIAresponse = await firstValueFrom(this.http.post("https://senai-gpt-api.azurewebsites.net/messages", novaRespostaIA, {
       headers: {
 
-        "Content-Type": "Aplication/json",
+        "Content-Type": "Application/json",
         "Authorization": "Bearer " + localStorage.getItem("meuToken")
 
       }
@@ -146,4 +153,53 @@ export class ChatScreenComponent {
     await this.onChatClick(this.chatSelecionado);
 
   }
+
+  async novoChat(){
+
+    const nomeChat = prompt("Digite o nome do novo chat");
+
+    if (!nomeChat){
+
+      alert("Nome invalido.");
+      return;
+
+    }
+
+    const novoChatObj = {
+
+      chatTitle: nomeChat,
+      userId: localStorage.getItem("meuId")
+      //id
+    }
+     let novoChatResponse = await firstValueFrom(this.http.post("https://senai-gpt-api.azurewebsites.net/chats",
+      novoChatObj, {
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": "Bearer " + localStorage.getItem("meuToken")
+      }
+    })) as IChat;
+                  //atualiza os chats da tela.
+    await this.getChats();
+
+    await this.onChatClick(novoChatResponse);
+
+  }
+
+  deslogar(){
+
+    //1 altenativa 
+    // localStorage.removeItem("meuToken");
+    // localStorage.removeItem("meuId");
+
+    //2 alternativa
+    localStorage.clear();
+    window.location.href = "login";
+
+  }
+
+
 }
+
+
+//1 link - 2 dados do usuario - 3 dados
+//htt.get-para buscar // post-para salva

@@ -5,45 +5,45 @@
 
         <div class="top">
 
-            <button class="btn-Nchat"> <i class="fa-regular fa-message"> </i> New Chat</button>
+            <button class="btn-Nchat" (click)="novoChat()"> <i class="fa-regular fa-message"> </i> New Chat</button>
 
             @for ( chat of chats; track $index) {
 
-                <button class= "btn-chat" (click)="onChatClick(chat)">
+            <button class="btn-chat" (click)="onChatClick(chat)">
                 <i class="fa-regular fa-message"></i>
                 {{ chat.chatTitle }}
 
-                </button>
+            </button>
             }
-            
+
 
         </div>
-
+            <!-- criar chat. selecionado == null -->
         <div class="button">
 
-            <button class="bt2"> <i class="fa-regular fa-trash-can"></i> 
+            <!-- <button class="bt2"> <i class="fa-regular fa-trash-can"></i>
                 Clear conversations</button>
 
             <button class="bt2"> <i class="fa-solid fa-circle-half-stroke"></i>
-                 Light mode</button>
+                Light mode</button>
 
-            <button class="bt2"><i class="fa-regular fa-user"></i> 
+            <button class="bt2"><i class="fa-regular fa-user"></i>
                 My account</button>
 
             <button class="bt2"> <i class="fa-regular fa-circle-up"></i>
-                 Updates & FAQ</button>
+                Updates & FAQ</button> -->
 
-            <button class="bt2"> <i class="fa-regular fa-circle-xmark"></i>
-                 Log out</button>
+            <button class="bt2" (click)="deslogar()"> <i class="fa-regular fa-circle-xmark"></i>
+                Log out</button>
 
         </div>
 
     </aside>
     <!-- Conteúdo principal do site -->
     <main class="central-panel">
-    
-    @if (chatSelecionado == null) {
-    
+
+        @if (chatSelecionado == null) {
+
 
         <div class="logo">
 
@@ -97,9 +97,11 @@
 
         </div>
 
-    } 
+        }
 
-    @if(chatSelecionado != null){
+        @if(chatSelecionado != null){
+
+        <!-- so vai executar quando o usuario tiver clicado em um chat -->
 
         <div class="chat-container">
             <div class="chat-header">
@@ -108,16 +110,12 @@
             </div>
 
             <div class="chat-messages">
-
+                
                 @for(msg of menssagens; track $index){
                 <p class="message-item" [class.chatbot]="msg.userId =='chatbot'"> {{msg.text}}</p>
                 }
             </div>
         </div>
-
-        }
-
-
         <div class="input-container">
 
 
@@ -125,12 +123,13 @@
 
             <i class="fa-solid fa-image"></i>
 
-            <input type="text" placeholder=" Type menssage" [formControl]="menssagemUsuario">
+            <input type="text" [formControl]="menssagemUsuario" placeholder=" Type menssage">
 
-            <i  class="fa-solid fa-paper-plane" (click)="enviarMenssagen()" ></i>
+            <i class="fa-solid fa-paper-plane" (click)="enviarMenssagen()"></i>
 
         </div>
-
+        
+    }
 
     </main>
 
